@@ -7,6 +7,7 @@ public class Monedas {
 		double variante = 0;
 		int salida = 0;
         do {
+        	try {
 		String[] opciones = { "conv de monedas", "conversor de kilometros" };
 		String n = (String) JOptionPane.showInputDialog(null, "elija el conversor", "conversor",
 				JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
@@ -79,8 +80,13 @@ public class Monedas {
 				
 			}
 		}
-		 salida = JOptionPane.showConfirmDialog(null,"desea hacer mas cambios?");
+        	
 		
+		 salida = JOptionPane.showConfirmDialog(null," desea volver al menu?");
+		 JOptionPane.showMessageDialog(null, salida);
+        	}catch(Exception e) {
+    			salida = JOptionPane.showConfirmDialog(null,"ud ha decidido cancelar la operacion, desea volver al menu?");
+    			}
         }while(salida==0);
 		
         JOptionPane.showMessageDialog(null, "salir");
