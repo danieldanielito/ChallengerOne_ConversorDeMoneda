@@ -8,10 +8,10 @@ public class Monedas {
 		int salida = 0;
 		do {
 			try {
-				String[] opciones = { "conv de monedas", "conversor de kilometros" };
+				String[] opciones = { "conversor de monedas", "conversor de kilometros" };
 				String n = (String) JOptionPane.showInputDialog(null, "elija el conversor", "conversor",
 						JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
-				if (n.equalsIgnoreCase("conv de monedas")) {
+				if (n.equalsIgnoreCase("conversor de monedas")) {
 					double monto = Double.parseDouble(JOptionPane.showInputDialog("ingrese el monto a cambiar"));
 					double montoCambiado = 0.00;
 					String[] cambios = { "de Dólar a peso", "de peso a dolar", "de Euros a pesos", "de pesos a euros",
@@ -23,7 +23,7 @@ public class Monedas {
 						montoCambiado = monto * 377;
 						JOptionPane.showMessageDialog(null, "son " + montoCambiado + " pesos");
 					} else if (mon.equalsIgnoreCase(cambios[1])) {
-						montoCambiado = +monto / 377;
+						montoCambiado = monto / 377;
 						JOptionPane.showMessageDialog(null, "son " + montoCambiado + " dolares");
 
 					} else if (mon.equalsIgnoreCase(cambios[2])) {
@@ -83,10 +83,17 @@ public class Monedas {
 				// JOptionPane.showConfirmDialog(null," desea volver al menu?")= si presionas si
 				// es = 0,si presionas no es = 1,si presionas cancelar es = 2
 				salida = JOptionPane.showConfirmDialog(null, " desea volver al menu?");
+				if(salida ==2) {
+				do {
+					salida = JOptionPane.showConfirmDialog(null,
+							"ud ha decidido cancelar la operacion, desea volver al menu?");	
+					}while(salida ==2);}
 
 			} catch (Exception e) {
-				salida = JOptionPane.showConfirmDialog(null,
-						"ud ha decidido cancelar la operacion, desea volver al menu?");
+				do {
+					salida = JOptionPane.showConfirmDialog(null,
+							"ud ha decidido cancelar la operacion,o hubo algun error, desea volver al menu?");	
+					}while(salida ==2);
 			}
 		} while (salida == 0);
 
